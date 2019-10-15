@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reward_app_mobile/qr_generator.dart';
 import 'scanner.dart';
 import 'map_location.dart';
 class HomePage extends StatefulWidget {
@@ -68,27 +69,34 @@ class MainContent extends StatelessWidget {
               ),
               Row(
                 children: <Widget>[
-                   Expanded(
+                  Expanded(
                       child: Padding(
-                    padding: const EdgeInsets.only(right: 5.0),
-                    child:  Container(
-                      height: 100.0,
-                      decoration:  BoxDecoration(
-                          borderRadius:  BorderRadius.circular(5.0),
-                          color: Colors.black),
-                      child:  Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                           Icon(
-                            Icons.card_membership,
-                            color: Colors.white,
-                          ),
-                           Text("New Membership",
-                              style:  TextStyle(color: Colors.white))
-                        ],
-                      ),
-                    ),
-                  )),
+                          padding: const EdgeInsets.only(right: 5.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => QRGenerator()));
+                            },
+                            child:  Container(
+                              height: 100.0,
+                              decoration:  BoxDecoration(
+                                  borderRadius:  BorderRadius.circular(5.0),
+                                  color: Colors.black),
+                              child:  Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                   Icon(
+                                    Icons.card_membership,
+                                    color: Colors.white,
+                                  ),
+                                   Text("New Membership",
+                                      style:  TextStyle(color: Colors.white))
+                                ],
+                              ),
+                            ),
+                          ))),
                    Expanded(
                       child: Padding(
                           padding: const EdgeInsets.only(right: 5.0),

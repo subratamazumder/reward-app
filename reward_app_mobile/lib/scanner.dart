@@ -6,12 +6,12 @@ import 'package:flutter/services.dart';
 
 class ScannerPage extends StatefulWidget {
   @override
-  ScannerPageState createState() {
-    return ScannerPageState();
+  _ScannerPageState createState() {
+    return _ScannerPageState();
   }
 }
 
-class ScannerPageState extends State<ScannerPage> {
+class _ScannerPageState extends State<ScannerPage> {
   String result = "No scan data available";
 
   Future _scanQR() async {

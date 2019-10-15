@@ -7,7 +7,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: Colors.orange, //or set color with: Color(0xFF0000FF)
+      statusBarColor: Colors.black, //or set color with: Color(0xFF0000FF)
     ));
     return  Scaffold(
       appBar:  AppBar(
