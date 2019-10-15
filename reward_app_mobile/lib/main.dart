@@ -23,43 +23,43 @@ class SCP extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return  Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Stack(
+             Stack(
               alignment: Alignment.center,
               children: <Widget>[
-                new StakedIcons(),
+                 StakedIcons(),
                 
               ],
             ),
-            new Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0, bottom: 0.0),
-                  child: new Text(
+                  child:  Text(
                     "SC Paul Jewellers",
-                    style: new TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+                    style:  TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
                   ),
                 )
               ],
             ),
-            new Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 80.0),
-                  child: new Text(
+                  child:  Text(
                     "www.scpauljewellers.com",
-                    style: new TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                    style:  TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                 )
               ],
             ),
-            new Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Expanded(
@@ -72,14 +72,14 @@ class MyHomePage extends StatelessWidget {
                            builder: (context) => LoginPage(),
                          ));
                       },
-                      child: new Container(
+                      child:  Container(
                           alignment: Alignment.center,
                           height: 60.0,
-                          decoration: new BoxDecoration(
+                          decoration:  BoxDecoration(
                               color: Colors.black,
-                              borderRadius: new BorderRadius.circular(9.0)),
-                          child: new Text("Sign In with OTP",
-                              style: new TextStyle(
+                              borderRadius:  BorderRadius.circular(9.0)),
+                          child:  Text("Sign In with OTP",
+                              style:  TextStyle(
                                   fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold))),
                     ),
                   ),

@@ -9,25 +9,25 @@ class LoginPage extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
       statusBarColor: Colors.orange, //or set color with: Color(0xFF0000FF)
     ));
-    return new Scaffold(
-      appBar: new AppBar(
+    return  Scaffold(
+      appBar:  AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          iconTheme: new IconThemeData(color: Color(0xFF18D191))),
+          iconTheme:  IconThemeData(color: Color(0xFF18D191))),
       body: Container(
         width: double.infinity,
-        child: new Column(
+        child:  Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            // new StakedIcons(),
-            // new Row(
+            //  StakedIcons(),
+            //  Row(
             //   mainAxisAlignment: MainAxisAlignment.center,
             //   children: <Widget>[
             //     Padding(
             //       padding: const EdgeInsets.only(top: 8.0, bottom: 80.0),
-            //       child: new Text(
+            //       child:  Text(
             //         "Quick Bee",
-            //         style: new TextStyle(fontSize: 30.0),
+            //         style:  TextStyle(fontSize: 30.0),
             //       ),
             //     )
             //   ],
@@ -35,22 +35,22 @@ class LoginPage extends StatelessWidget {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 0.0),
-              child: new TextField(
-                decoration: new InputDecoration(labelText: 'Mobile Number'),
+              child:  TextField(
+                decoration:  InputDecoration(labelText: 'Mobile Number'),
               ),
             ),
-            new SizedBox(
+             SizedBox(
               height: 15.0,
             ),
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 0.0),
-              child: new TextField(
+              child:  TextField(
                 obscureText: true,
-                decoration: new InputDecoration(labelText: 'OTP'),
+                decoration:  InputDecoration(labelText: 'OTP'),
               ),
             ),
-            new Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Expanded(
@@ -64,14 +64,14 @@ class LoginPage extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => HomePage()));
                       },
-                      child: new Container(
+                      child:  Container(
                           alignment: Alignment.center,
                           height: 60.0,
-                          decoration: new BoxDecoration(
+                          decoration:  BoxDecoration(
                               color: Colors.black,
-                              borderRadius: new BorderRadius.circular(9.0)),
-                          child: new Text("Login",
-                              style: new TextStyle(
+                              borderRadius:  BorderRadius.circular(9.0)),
+                          child:  Text("Login",
+                              style:  TextStyle(
                                   fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold))),
                     ),
                   ),
@@ -80,11 +80,11 @@ class LoginPage extends StatelessWidget {
                 //   child: Padding(
                 //     padding: const EdgeInsets.only(
                 //         left: 10.0, right: 20.0, top: 10.0),
-                //     child: new Container(
+                //     child:  Container(
                 //         alignment: Alignment.center,
                 //         height: 60.0,
-                //         child: new Text("Forgot Password?",
-                //             style: new TextStyle(
+                //         child:  Text("Forgot Password?",
+                //             style:  TextStyle(
                 //                 fontSize: 17.0, color: Color(0xFF18D191)))),
                 //   ),
                 // )
@@ -96,7 +96,7 @@ class LoginPage extends StatelessWidget {
             //     children: <Widget>[
             //       Padding(
             //         padding: const EdgeInsets.only(bottom:18.0),
-            //         child: new Text("Create A New Account ",style: new TextStyle(
+            //         child:  Text("Create A  Account ",style:  TextStyle(
             //                     fontSize: 17.0, color: Color(0xFF18D191),fontWeight: FontWeight.bold)),
             //       ),
             //     ],

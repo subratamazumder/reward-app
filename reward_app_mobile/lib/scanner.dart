@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 class ScannerPage extends StatefulWidget {
   @override
   ScannerPageState createState() {
-    return new ScannerPageState();
+    return ScannerPageState();
   }
 }
 
@@ -47,15 +47,15 @@ class ScannerPageState extends State<ScannerPage> {
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          iconTheme: new IconThemeData(color: Color(0xFF18D191))),
+          iconTheme: IconThemeData(color: Color(0xFF18D191))),
       body: Center(
         child: Text(
           result,
-          style: new TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        icon: new Icon(
+        icon: Icon(
           Icons.camera_alt,
           color: Colors.white,
         ),
