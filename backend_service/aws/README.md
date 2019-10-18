@@ -6,10 +6,10 @@ Consumer
 
 Request
   * Mobile Number
-            ..* Name
-            - Post Code
-            - Mobile Metadata (platform, version)
-            - App Metadata (version,id)
+  * Name
+  * Post Code
+  * Mobile Metadata (platform, version)
+  * App Metadata (version,id)
 Response 
             - Status
             - CDN url of QR
