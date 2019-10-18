@@ -4,8 +4,8 @@ Consumer
 * Customer Mobile App
 * Admin Mobile App
 Request
-            * Mobile Number
-            * Name
+..* Mobile Number
+..* Name
             - Post Code
             - Mobile Metadata (platform, version)
             - App Metadata (version,id)
