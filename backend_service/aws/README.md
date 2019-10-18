@@ -1,7 +1,8 @@
-#Service Catalogue
+# Service Catalogue
 ## Registration Service
-Consumer    - Customer Mobile App
-            - Admin Mobile App
+Consumer    
+* Customer Mobile App
+* Admin Mobile App
 Request
             - Mobile Number
             - Name
