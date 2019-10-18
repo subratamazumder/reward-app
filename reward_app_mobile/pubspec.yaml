@@ -20,7 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   barcode_scan: ^0.0.3
-  qr: ^1.2.0
+  qr_flutter: ^3.0.1
   google_maps_flutter: ^0.5.21
   permission: ^0.1.5
   # http: ^0.12.0+1
