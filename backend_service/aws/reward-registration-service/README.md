@@ -18,6 +18,10 @@ reward-registration-service$ ./test-local.sh
 reward-registration-service$ ./deploy.sh
 reward-registration-service$ ./test-aws.sh
 ```
+## View in AWS
+```bash
+reward-registration-service$ ./tail-logs.sh
+```
 ## Unit tests (failing currently due to xray)
 
 Tests are defined in the `tests` folder in this project. Use PIP to install the [pytest](https://docs.pytest.org/en/latest/) and run unit tests.
