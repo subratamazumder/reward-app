@@ -37,7 +37,7 @@ Resources:
       CodeUri: hello_world/
       Handler: app.lambda_handler
       Runtime: python3.7
-      MemorySize: 256
+      MemorySize: 512
       Timeout: 15
       AutoPublishAlias: live
       Tracing: Active

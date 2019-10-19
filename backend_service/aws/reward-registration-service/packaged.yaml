@@ -1,0 +1,86 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'reward-registration-service
+
+  Sample SAM Template for reward-registration-service
+
+  '
+Globals:
+  Function:
+    Timeout: 3
+Resources:
+  RewadRegistrationAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: RegistrationAPI
+      StageName: test
+      TracingEnabled: true
+      EndpointConfiguration: REGIONAL
+      OpenApiVersion: 3.0.1
+      BinaryMediaTypes:
+      - image~1gif
+      - image~1png
+      - application~1json
+      - text~1plain
+      Tags:
+        NameTag: Registration API
+        ConsumerAppTag: Reward App
+        Auth: null
+        ApiKeyRequired: true
+  RewardRegistrationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reward-registration-function
+      Description: Register customer to reawrad membership
+      CodeUri: s3://dev-test-sam-cli/4e6c7a20ee4074d91dbaa0d251ce5e4e
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      MemorySize: 512
+      Timeout: 15
+      AutoPublishAlias: live
+      Tracing: Active
+      ReservedConcurrentExecutions: 100
+      Environment:
+        Variables:
+          AWS_XRAY_TRACING_NAME: RegistrationService
+      Policies:
+      - AWSLambdaExecute
+      - Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - s3:GetObject
+          - s3:GetObjectACL
+          - s3:GetObjectTagging
+          - s3:PutObjectTagging
+          - s3:PutObject
+          - s3:ReplicateTags
+          Resource: arn:aws:s3:::dev-scp-reward-app/*
+      Tags:
+        NameTag: Registration Service
+        ConsumerAppTag: Reward App
+      Events:
+        HelloWorldAPiEvent:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: get
+            RestApiId:
+              Ref: RewadRegistrationAPI
+Outputs:
+  RewardRegistrationApi:
+    Description: API Gateway endpoint URL for Prod stage for Hello World function
+    Value:
+      Fn::Sub: https://${RewadRegistrationAPI}.execute-api.${AWS::Region}.amazonaws.com/test/hello/
+  RewardRegistrationFunction:
+    Description: Hello World Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - RewardRegistrationFunction
+      - Arn
+  RewardRegistrationFunctionIamRole:
+    Description: Implicit IAM Role created for Hello World function
+    Value:
+      Fn::GetAtt:
+      - RewardRegistrationFunctionRole
+      - Arn
