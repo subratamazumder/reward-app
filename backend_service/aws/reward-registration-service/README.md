@@ -11,12 +11,12 @@ The application uses several AWS resources, including Lambda functions and an AP
 
 ## Build & Test in local
 ```bash
-reward-registration-service$$ ./test-local.sh
+reward-registration-service$ ./test-local.sh
 ```
 ## Deploy & Test in AWS
 ```bash
-reward-registration-service$$ ./deploy.sh
-reward-registration-service$$ ./test-aws.sh
+reward-registration-service$ ./deploy.sh
+reward-registration-service$ ./test-aws.sh
 ```
 ## Unit tests (failing currently due to xray)
 
