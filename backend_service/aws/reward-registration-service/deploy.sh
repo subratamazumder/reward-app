@@ -1,0 +1,1 @@
+sam build && sam package --output-template packaged.yaml --s3-bucket dev-test-sam-cli --profile devtest && sam deploy --template-file packaged.yaml --capabilities CAPABILITY_IAM --stack-name reward-registration-service-stack --profile devtest
