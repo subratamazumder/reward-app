@@ -25,14 +25,14 @@ Resources:
       Tags:
         NameTag: Registration API
         ConsumerAppTag: Reward App
-        Auth: null
+      Auth:
         ApiKeyRequired: true
   RewardRegistrationFunction:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: reward-registration-function
       Description: Register customer to reawrad membership
-      CodeUri: s3://dev-test-sam-cli/4e6c7a20ee4074d91dbaa0d251ce5e4e
+      CodeUri: s3://dev-test-sam-cli/72da2747fa26759c607c502c06d84d01
       Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 512
@@ -67,20 +67,66 @@ Resources:
             Method: get
             RestApiId:
               Ref: RewadRegistrationAPI
+  RewardRegistrationApiKey:
+    Type: AWS::ApiGateway::ApiKey
+    Properties:
+      Name:
+        Fn::Join:
+        - ''
+        - - Ref: AWS::StackName
+          - -apikey
+      Description: CloudFormation API Key V1
+      Enabled: true
+      GenerateDistinctId: false
+  RewardRegistrationApiUsagePlan:
+    Type: AWS::ApiGateway::UsagePlan
+    Properties:
+      ApiStages:
+      - ApiId:
+          Ref: RewadRegistrationAPI
+        Stage: test
+      Description:
+        Fn::Join:
+        - ' '
+        - - Ref: AWS::StackName
+          - usage plan
+      Quota:
+        Limit: 2000
+        Period: MONTH
+      Throttle:
+        BurstLimit: 10
+        RateLimit: 10
+      UsagePlanName:
+        Fn::Join:
+        - ''
+        - - Ref: AWS::StackName
+          - -usage-plan
+  RewardRegistrationApiUsagePlanKey:
+    Type: AWS::ApiGateway::UsagePlanKey
+    Properties:
+      KeyId:
+        Ref: RewardRegistrationApiKey
+      KeyType: API_KEY
+      UsagePlanId:
+        Ref: RewardRegistrationApiUsagePlan
 Outputs:
   RewardRegistrationApi:
-    Description: API Gateway endpoint URL for Prod stage for Hello World function
+    Description: API Gateway endpoint URL
     Value:
       Fn::Sub: https://${RewadRegistrationAPI}.execute-api.${AWS::Region}.amazonaws.com/test/hello/
   RewardRegistrationFunction:
-    Description: Hello World Lambda Function ARN
+    Description: Lambda Function ARN
     Value:
       Fn::GetAtt:
       - RewardRegistrationFunction
       - Arn
   RewardRegistrationFunctionIamRole:
-    Description: Implicit IAM Role created for Hello World function
+    Description: Lambda Implicit IAM Role ARN
     Value:
       Fn::GetAtt:
       - RewardRegistrationFunctionRole
       - Arn
+  RewardRegistrationAPIKey:
+    Description: API key
+    Value:
+      Ref: RewardRegistrationApiKey

@@ -27,7 +27,7 @@ Resources:
       Tags:
         NameTag: Registration API
         ConsumerAppTag: Reward App
-        Auth:
+      Auth:
         ApiKeyRequired: true
   RewardRegistrationFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -69,16 +69,46 @@ Resources:
             Path: /hello
             Method: get
             RestApiId: !Ref RewadRegistrationAPI
+  RewardRegistrationApiKey: 
+    Type: AWS::ApiGateway::ApiKey
+    Properties: 
+      Name: !Join ["", [{"Ref": "AWS::StackName"}, "-apikey"]]
+      Description: "CloudFormation API Key V1"
+      Enabled: true
+      GenerateDistinctId: false
+  RewardRegistrationApiUsagePlan:
+    Type: "AWS::ApiGateway::UsagePlan"
+    Properties:
+      ApiStages: 
+      - ApiId: !Ref RewadRegistrationAPI
+        Stage: test   
+      Description: !Join [" ", [{"Ref": "AWS::StackName"}, "usage plan"]]
+      Quota:
+        Limit: 2000
+        Period: MONTH
+      Throttle:
+        BurstLimit: 10
+        RateLimit: 10
+      UsagePlanName: !Join ["", [{"Ref": "AWS::StackName"}, "-usage-plan"]]
+  RewardRegistrationApiUsagePlanKey:
+    Type: "AWS::ApiGateway::UsagePlanKey"
+    Properties:
+      KeyId: !Ref RewardRegistrationApiKey
+      KeyType: API_KEY
+      UsagePlanId: !Ref RewardRegistrationApiUsagePlan
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   RewardRegistrationApi:
-    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Description: "API Gateway endpoint URL"
     Value: !Sub "https://${RewadRegistrationAPI}.execute-api.${AWS::Region}.amazonaws.com/test/hello/"
   RewardRegistrationFunction:
-    Description: "Hello World Lambda Function ARN"
+    Description: "Lambda Function ARN"
     Value: !GetAtt RewardRegistrationFunction.Arn
   RewardRegistrationFunctionIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
+    Description: "Lambda Implicit IAM Role ARN"
     Value: !GetAtt RewardRegistrationFunctionRole.Arn
+  RewardRegistrationAPIKey:
+    Description: "API key"
+    Value: !Ref RewardRegistrationApiKey
