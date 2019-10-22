@@ -1,5 +1,5 @@
 {
-  "body": "{\"message\": \"hello world\"}",
+  "body": "{\"mobileNumber\":\"9111111111\",\"name\":\"subrata\",\"postCode\":\"111111\",\"platform\":\"android\",\"appVersion\":\"1.0.0\"}",
   "resource": "/{proxy+}",
   "path": "/path/to/resource",
   "httpMethod": "POST",

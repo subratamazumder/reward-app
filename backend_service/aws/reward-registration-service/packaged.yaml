@@ -32,7 +32,7 @@ Resources:
     Properties:
       FunctionName: reward-registration-function
       Description: Register customer to reawrad membership
-      CodeUri: s3://dev-test-sam-cli/72da2747fa26759c607c502c06d84d01
+      CodeUri: s3://dev-test-sam-cli/39022640572789aac1f6987110b219c5
       Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 512
@@ -56,6 +56,10 @@ Resources:
           - s3:PutObject
           - s3:ReplicateTags
           Resource: arn:aws:s3:::dev-scp-reward-app/*
+        - Effect: Allow
+          Action:
+          - SNS:Publish
+          Resource: '*'
       Tags:
         NameTag: Registration Service
         ConsumerAppTag: Reward App
@@ -63,8 +67,8 @@ Resources:
         HelloWorldAPiEvent:
           Type: Api
           Properties:
-            Path: /hello
-            Method: get
+            Path: /customers/rewards
+            Method: post
             RestApiId:
               Ref: RewadRegistrationAPI
   RewardRegistrationApiKey:
@@ -113,7 +117,7 @@ Outputs:
   RewardRegistrationApi:
     Description: API Gateway endpoint URL
     Value:
-      Fn::Sub: https://${RewadRegistrationAPI}.execute-api.${AWS::Region}.amazonaws.com/test/hello/
+      Fn::Sub: https://${RewadRegistrationAPI}.execute-api.${AWS::Region}.amazonaws.com/test/customers/rewards
   RewardRegistrationFunction:
     Description: Lambda Function ARN
     Value:

@@ -1,4 +1,6 @@
-
+# Custom secrets
+test_enc.py
+test_sms.py
 # Created by https://www.gitignore.io/api/osx,linux,python,windows,pycharm,visualstudiocode
 
 ### Linux ###

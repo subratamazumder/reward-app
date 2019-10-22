@@ -58,6 +58,10 @@ Resources:
                 - s3:PutObject
                 - s3:ReplicateTags
               Resource: 'arn:aws:s3:::dev-scp-reward-app/*'
+            - Effect: Allow
+              Action:
+                - SNS:Publish
+              Resource: '*'
 
       Tags: 
         NameTag: Registration Service
@@ -66,8 +70,8 @@ Resources:
         HelloWorldAPiEvent:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /hello
-            Method: get
+            Path: /customers/rewards
+            Method: post
             RestApiId: !Ref RewadRegistrationAPI
   RewardRegistrationApiKey: 
     Type: AWS::ApiGateway::ApiKey
@@ -102,7 +106,7 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   RewardRegistrationApi:
     Description: "API Gateway endpoint URL"
-    Value: !Sub "https://${RewadRegistrationAPI}.execute-api.${AWS::Region}.amazonaws.com/test/hello/"
+    Value: !Sub "https://${RewadRegistrationAPI}.execute-api.${AWS::Region}.amazonaws.com/test/customers/rewards"
   RewardRegistrationFunction:
     Description: "Lambda Function ARN"
     Value: !GetAtt RewardRegistrationFunction.Arn
