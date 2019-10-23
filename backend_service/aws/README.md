@@ -29,6 +29,33 @@ High Level Steps
 * Upload to S3
 * Send execution status with CDN URL
 
+Data Model
+
+Access Patterns
+1. Get customer name,post_code,email_address,reward_balance, customer_tier by mobile_number
+2. Update rewrad_balance, transaction_volume by mobile_number
+3. 
+| pk | sk |
+| --- | --- |
+| mobile_number | List all new or modified files |
+
+* Customer
+    * mobile_number
+    * name
+    * post_code
+    * email_address
+    * device_data
+        * device_id
+        * platform
+    * app_data
+        * app_version
+        * app_id
+    * reward_balance
+    * transaction_volume
+    * transaction_unit
+    * customer_tier
+    
+* Rewards
 ## Add Reward Service
 Consumer
 * Admin Mobile App (via scaning QR)
