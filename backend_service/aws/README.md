@@ -1,9 +1,21 @@
-# Service Catalog
+# Service/Function Catalog
 [Registration Service](#Registration-Service)
 
 [Add Reward Service](#Add-Reward-Service)
 
 [Retrieve Reward Service](#Retrieve-Reward-Service)
+
+[Reward Auth Challenge Function](reward-auth-challenge-function)
+## Reward Auth Challenge Function
+Consumer
+* Cognito Pool
+
+Request
+* Mobile Number
+* User Name
+
+Response
+* Status
 ## Registration Service
 Consumer    
 * Customer Mobile App

@@ -17,8 +17,6 @@ logger.setLevel(logging.INFO)
 QR_BUCKET_NAME = "dev-scp-reward-app"
 QR_FOLDER_NAME = "qr/"
 KEY="5xMGUQOgMpP42AXUEJBf3idL4KRQZPaKht4GU1MH_tk="
-SMS_API_KEY="test key here"
-SMS_API_SECRET="test secret here"
 class S3ImagesUploadFailed(Exception):
     pass
 
@@ -97,27 +95,6 @@ def get_s3_obj_key():
 def get_qr_cdn_url(s3_object_key):
     return "https://{}.s3.ap-south-1.amazonaws.com/{}".format(QR_BUCKET_NAME,s3_object_key)
 
-def send_sms(payload):
-    mobile_number = payload["mobileNumber"]
-    send_way2sms(SMS_API_URL, SMS_API_KEY, SMS_API_SECRET, 'prod', mobile_number, 'SCPJWL', 'Sucessfully registered!' )
-    # sns.publish(
-    #     PhoneNumber=mobile_number,
-    #     Message="Successfully registered!"
-    # )
-
-SMS_API_URL = "https://www.way2sms.com/api/v1/sendCampaign"
-
-# get request
-def send_way2sms(reqUrl, apiKey, secretKey, useType, phoneNo, senderId, textMessage):
-  req_params = {
-  'apikey':apiKey,
-  'secret':secretKey,
-  'usetype':useType,
-  'phone': phoneNo,
-  'message':textMessage,
-  'senderid':senderId
-  }
-  return requests.post(reqUrl, req_params)
 
 def lambda_handler(event, context):
     """
@@ -136,7 +113,6 @@ def lambda_handler(event, context):
         payload = json.loads(event['body'])
         s3_object_key = get_s3_obj_key()
         upload_to_s3(get_qr_image(payload),s3_object_key,QR_BUCKET_NAME)
-        send_sms(payload)
         return respond(None, {
                 "qrCdnUrl": get_qr_cdn_url(s3_object_key)
             })
