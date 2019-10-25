@@ -1,0 +1,70 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'reward-auth-challenge-function
+
+  Sample SAM Template for reward-auth-challenge-function
+
+  '
+Parameters:
+  SMSApiKey:
+    Type: String
+  SMSApiSecret:
+    Type: String
+Globals:
+  Function:
+    Timeout: 3
+Resources:
+  RewardAuthChallengeFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reward-auth-challenge-function
+      Description: Reward auth challenge
+      CodeUri: s3://dev-test-sam-cli/782f17b947028bd3104fe6a8e843def8
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      MemorySize: 512
+      Timeout: 15
+      AutoPublishAlias: live
+      Tracing: Active
+      ReservedConcurrentExecutions: 100
+      Environment:
+        Variables:
+          AWS_XRAY_TRACING_NAME: RewardAuthChallengeFunction
+          SMS_API_KEY:
+            Ref: SMSApiKey
+          SMS_API_SECRET:
+            Ref: SMSApiSecret
+          SMS_ENV: stage
+      Policies:
+      - AWSLambdaExecute
+      - Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - s3:GetObject
+          - s3:GetObjectACL
+          - s3:GetObjectTagging
+          - s3:PutObjectTagging
+          - s3:PutObject
+          - s3:ReplicateTags
+          Resource: arn:aws:s3:::dev-scp-reward-app/*
+        - Effect: Allow
+          Action:
+          - SNS:Publish
+          Resource: '*'
+      Tags:
+        NameTag: Reward At=uth Challenge Function
+        ConsumerAppTag: Cognito Pool
+Outputs:
+  RewardAuthChallengeFunction:
+    Description: Reward Auth Challenge Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - RewardAuthChallengeFunction
+      - Arn
+  RewardAuthChallengeFunctionIamRole:
+    Description: Implicit IAM Role created for Hello World function
+    Value:
+      Fn::GetAtt:
+      - RewardAuthChallengeFunctionRole
+      - Arn

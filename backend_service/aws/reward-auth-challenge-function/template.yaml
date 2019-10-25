@@ -1,0 +1,68 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  reward-auth-challenge-function
+
+  Sample SAM Template for reward-auth-challenge-function
+
+Parameters:
+    SMSApiKey:
+        Type: String
+    SMSApiSecret:
+        Type: String
+    SMSEnv:
+        Type: String
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+Resources:
+  RewardAuthChallengeFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: reward-auth-challenge-function #How do I pass dynamic env value to change name
+      Description: Reward auth challenge
+      CodeUri: hello_world/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      MemorySize: 512
+      Timeout: 15
+      AutoPublishAlias: live
+      Tracing: Active
+      ReservedConcurrentExecutions: 100
+      Environment:
+        Variables:
+          AWS_XRAY_TRACING_NAME: RewardAuthChallengeFunction
+          SMS_API_KEY: !Ref SMSApiKey
+          SMS_API_SECRET: !Ref SMSApiSecret
+          SMS_ENV: !Ref SMSEnv
+      Policies:
+        - AWSLambdaExecute
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+                - s3:GetObjectACL
+                - s3:GetObjectTagging
+                - s3:PutObjectTagging
+                - s3:PutObject
+                - s3:ReplicateTags
+              Resource: 'arn:aws:s3:::dev-scp-reward-app/*'
+            - Effect: Allow
+              Action:
+                - SNS:Publish
+              Resource: '*'
+      Tags: 
+        NameTag: Reward At=uth Challenge Function
+        ConsumerAppTag: Cognito Pool
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  RewardAuthChallengeFunction:
+    Description: "Reward Auth Challenge Lambda Function ARN"
+    Value: !GetAtt RewardAuthChallengeFunction.Arn
+  RewardAuthChallengeFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt RewardAuthChallengeFunctionRole.Arn
