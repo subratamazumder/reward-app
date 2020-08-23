@@ -1,4 +1,8 @@
 # Reward App
+## App Screen
+![Landing](landing.png)
+![Login](login.png)
+![Home](home.png)
 ## Functional
 As a User I want to register to be a member so that I can get rewards point
 
