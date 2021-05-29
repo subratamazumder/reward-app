@@ -56,7 +56,7 @@ class MainContent extends StatelessWidget {
               Row(
                 children: <Widget>[
                    Text(
-                    "Warm welcome",
+                    "Welcome Guest",
                     style:  TextStyle(
                       fontSize: 30.0,
                     ),
@@ -181,7 +181,7 @@ class MainContent extends StatelessWidget {
                                 borderRadius:  BorderRadius.circular(5.0),
                                 image:  DecorationImage(
                                     image:  NetworkImage(
-                                        'https://d3uxjh2kr4vhnj.cloudfront.net/images/team/rameshwar_paul.jpg'),
+                                        'https://d3uxjh2kr4vhnj.cloudfront.net/images/team/person-male.png'),
                                     fit: BoxFit.cover)),
                           ),
                            Text(
@@ -207,7 +207,7 @@ class MainContent extends StatelessWidget {
                                 borderRadius:  BorderRadius.circular(5.0),
                                 image:  DecorationImage(
                                     image:  NetworkImage(
-                                        'https://d3uxjh2kr4vhnj.cloudfront.net/images/team/debraj-paul.JPG'),
+                                        'https://d3uxjh2kr4vhnj.cloudfront.net/images/team/person-male.png'),
                                     fit: BoxFit.cover)),
                           ),
                            Text("Executive Management",
@@ -231,7 +231,7 @@ class MainContent extends StatelessWidget {
                                 borderRadius:  BorderRadius.circular(5.0),
                                 image:  DecorationImage(
                                     image:  NetworkImage(
-                                        'https://d3uxjh2kr4vhnj.cloudfront.net/images/team/rajib-paul-.jpg'),
+                                        'https://d3uxjh2kr4vhnj.cloudfront.net/images/team/person-male.png'),
                                     fit: BoxFit.cover)),
                           ),
                            Text('Executive Management',

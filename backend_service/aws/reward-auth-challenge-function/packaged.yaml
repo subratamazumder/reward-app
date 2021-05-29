@@ -10,6 +10,8 @@ Parameters:
     Type: String
   SMSApiSecret:
     Type: String
+  SMSEnv:
+    Type: String
 Globals:
   Function:
     Timeout: 3
@@ -19,7 +21,7 @@ Resources:
     Properties:
       FunctionName: reward-auth-challenge-function
       Description: Reward auth challenge
-      CodeUri: s3://dev-test-sam-cli/782f17b947028bd3104fe6a8e843def8
+      CodeUri: s3://dev-test-sam-cli/add85bfb51ee64410344c34909c903e6
       Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 512
@@ -34,7 +36,8 @@ Resources:
             Ref: SMSApiKey
           SMS_API_SECRET:
             Ref: SMSApiSecret
-          SMS_ENV: stage
+          SMS_ENV:
+            Ref: SMSEnv
       Policies:
       - AWSLambdaExecute
       - Version: '2012-10-17'
@@ -53,7 +56,7 @@ Resources:
           - SNS:Publish
           Resource: '*'
       Tags:
-        NameTag: Reward At=uth Challenge Function
+        NameTag: Reward Auth Challenge Function
         ConsumerAppTag: Cognito Pool
 Outputs:
   RewardAuthChallengeFunction:

@@ -41,7 +41,7 @@ class MyHomePage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0, bottom: 0.0),
                   child:  Text(
-                    "SC Paul Jewellers",
+                    "ABCD Org",
                     style:  TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
                   ),
                 )
@@ -53,7 +53,7 @@ class MyHomePage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 80.0),
                   child:  Text(
-                    "www.scpauljewellers.com",
+                    "www.abcdorg.com",
                     style:  TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                 )

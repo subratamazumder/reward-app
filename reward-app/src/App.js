@@ -1,13 +1,13 @@
 import React from 'react';
 // import logo from './logo.svg';
-// import './App.css';
-import QRManager from "./components/qr-manager"
+import './App.css';
+import GoldPriceCalculator from "./components/gold-price-calculator"
 import Header from "./components/header"
 function App() {
   return (
     <div>
       <Header></Header>
-      <QRManager></QRManager>
+      <GoldPriceCalculator></GoldPriceCalculator>
     </div>
   );
 } 

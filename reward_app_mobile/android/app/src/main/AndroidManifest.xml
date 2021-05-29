@@ -22,6 +22,6 @@
         </activity>
         <activity android:name="com.apptreesoftware.barcodescan.BarcodeScannerActivity"/>
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="api-key-here"/>
+               android:value="AIzaSyDC3Fn5EenhpSsZTSGMFohjhditQEpb7SI"/>
     </application>
 </manifest>

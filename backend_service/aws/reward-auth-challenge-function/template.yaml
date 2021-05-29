@@ -54,7 +54,7 @@ Resources:
                 - SNS:Publish
               Resource: '*'
       Tags: 
-        NameTag: Reward At=uth Challenge Function
+        NameTag: Reward Auth Challenge Function
         ConsumerAppTag: Cognito Pool
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function

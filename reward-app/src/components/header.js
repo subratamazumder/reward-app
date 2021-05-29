@@ -6,8 +6,8 @@ function Header() {
     <div className="text-white text-center">
       <Jumbotron fluid className="bg-info">
         <Container>
-          <h1>SCP Reward Manger</h1>
-          <p>Tap on below options</p>
+          <h2>SC Paul Price Calculator</h2>
+          {/* <p>Tap on below options</p> */}
         </Container>
       </Jumbotron>
     </div>
