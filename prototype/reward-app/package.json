@@ -23,7 +23,7 @@
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-qr-reader": "^2.2.1",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
